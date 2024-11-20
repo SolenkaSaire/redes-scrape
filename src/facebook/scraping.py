@@ -6,6 +6,31 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from googletrans import Translator
+from src.common.human_behavior import HumanBehavior
+
+def like_page(driver):
+    try:
+        print("Esperando que el botón 'Me gusta' esté presente...")
+        like_button = WebDriverWait(driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div/div/div[1]/div[2]/div/div/div/div[4]/div/div/div[2]/div/div'))
+        )
+        like_button.click()
+        HumanBehavior.random_wait(1, 3)
+        HumanBehavior.scroll_page(driver, 1, 2)
+        print("Se ha hecho clic en el botón 'Me gusta'.")
+
+        # Esperar y hacer clic en el botón "Actualizar"
+        print("Esperando que el botón 'Actualizar' esté presente...")
+        update_button = WebDriverWait(driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, '//span[text()="Actualizar"]'))
+        )
+        update_button.click()
+        print("Se ha hecho clic en el botón 'Actualizar'.")
+    
+    except TimeoutException:
+        print("No se pudo encontrar el botón 'Me gusta' o 'Actualizar'.")
+    except Exception as e:
+        print(f"Error al intentar hacer clic en el botón 'Me gusta' o 'Actualizar': {e}")
 
 def scrape_facebook_profiles(driver):
     data = []
