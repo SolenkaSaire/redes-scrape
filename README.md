@@ -104,17 +104,11 @@ pip install -r requirements.txt
 
 4. Ejecuta el script de login para **Facebook** o **Instagram**:
 
-Para **Facebook**:
+Para **Facebook o Instagram**:
 ```bash
 python -m src.main
-Seleccione opción 1
 ```
 
-Para **Instagram**:
-```bash
-python -m src.main
-Seleccione opción 2
-```
 
 ### 4. Funcionamiento
 
