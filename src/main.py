@@ -3,6 +3,7 @@ import pandas as pd
 from src.facebook.login import facebook_login
 from src.instagram.login import instagram_login
 from src.facebook.scraping import scrape_facebook_profiles
+from src.facebook.scraping import scrape_facebook_posts
 from src.instagram.scraping import search_instagram, scrape_instagram_profile
 from src.common.driver_manager import get_web_driver
 from src.config.settings import Config
@@ -27,6 +28,9 @@ def main():
 
             # Llamar a la función de scraping de Facebook
             scrape_facebook_profiles(driver)
+
+            # Llamar a al función de scraping de publicaciones
+            #scrape_facebook_posts(driver)
             
         driver.quit()
 
